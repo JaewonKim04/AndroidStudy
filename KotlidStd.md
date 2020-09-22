@@ -42,11 +42,16 @@ var mutableList=MutavleListof<Int>()
 3. 값 삭제방법:mutableList.removeAt(방번호)
 
 * __맵__ : 인덱스가 아니라 __키(key)__ 로 접근하는 컬렉션
-* 사용:var mutableMap=mutableMapof<키,값>
-* 추가:mutableMap.put(키값,값)
-* 접근:mutableMap.get(키값)
+1. 선언: var mutableMap=mutableMapOf<String,String>()
+2. 추가:mutableMap.put("키값",값)
+3. 접근:mutableMap.get("키값")
+4. 수정:mutableMap.put("수정할 키값",값) 
+5. 삭제:mutableMap.remove("키값")
 
-* __Set__ : 반복되는 값 없이 저장해두는것 
+* __Set__ : __반복되는 값 없이__ 저장해두는것 
+1. 선언방법:var set=mutableSetOf<String>()
+2. 사용방법:set.add("JAN")...(동일한값은 입력되지 않음)
+3. set은 인덱스를 사용할수 없다(값으로 조회가능)
 ## 반복문
 * __for__:for()에서 괄호안에 조건문을 넣음   
 (예: for(변수 in 1..100){
