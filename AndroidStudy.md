@@ -105,13 +105,21 @@
 * 소스코드에서 처리한다   
 1. 권한에 대한 사용자 승인 확인   
 __-권한의 승인상태가져오기:__  
+```kotlin
 val cameraPermission=Context.Compat.checkSelfPermission(this,Manifest.permission.CAMERA)   
+```
 __-권한여부 확인하기:__   
+```kotlin
 if(cameraPermssion==PackageManager.PERMSSION_GRANTED){//상태가 승인일때 코드}   
+```
 __아니라면 2단계 실행__
 2. 사용자에게 승인 요청   
 -requestPermissions()를 호출해서 요청   
--
+```kotlin
+fun requestPermission(){
+    ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA),99)
+}
+```
 3. 사용자 승인 후 처리
 #### 서명권한
 * 권한을 사용하려는 앱이 권한을 정의하는 앱과 동일한 인증서로 서명된 경우 시스템은 권한을 자동으로 부여함

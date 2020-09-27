@@ -12,6 +12,7 @@ var 변수이름(:변수의타입)=변수에 넣을 값
 (예:var result="홍길">"홍길동")
 * 자바처럼 if,if else문을 사용할수 있다
 * __when:__ switch case문 대신 사용함   
+```kotlin
 when(result){   
     1->{
         실행코드
@@ -22,14 +23,19 @@ when(result){
     in 5..9{
         실행코드3
     }(5부터 9사이일때 실행)
-
+```
 ## 배열&컬렉션
-* 배열:미리 정해둔 개수 만큼 자료들을 넣을수있음   
-(예:var intArray:IntArray=IntArray(40))
+* 배열:미리 정해둔 개수 만큼 자료들을 넣을수있음  
+```kotlin 
+var intArray:IntArray=IntArray(40)
+```
 * 다른 언어의 배열처럼 0번방부터 시작
 * 리스트: 배열과 같이 미리 공간을 정해두고 사용
 * var intArray=intArrayOf(1,2,3...)으로 미리 값을 넣어둘수있음
-* 리스트 사용법: var list=Listof<Int>(10)
+* 리스트 사용법: 
+```kotlin
+var list=Listof<Int>(10)
+```
 ### 컬렉션
 * __뮤터블리스트__ :동적으로 공간을 지정해서 사용자가 넣는만큼 사용
 
