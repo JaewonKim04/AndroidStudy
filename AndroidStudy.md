@@ -112,14 +112,35 @@ __-권한여부 확인하기:__
 ```kotlin
 if(cameraPermssion==PackageManager.PERMSSION_GRANTED){//상태가 승인일때 코드}   
 ```
-__아니라면 2단계 실행__
+__아니라면 2단계 실행__   
 2. 사용자에게 승인 요청   
 -requestPermissions()를 호출해서 요청   
 ```kotlin
 fun requestPermission(){
     ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA),99)
+    //2번째 매개변수:권한이 복수있때를 대비한 배열
+    //3번째 매개변수:요청한 주체가 어떤 것인지 구분하기 위한것
 }
-```
+```    
+-앱을 실행시키면 권한 승인을 묻는 팝업이 나타남   
 3. 사용자 승인 후 처리
+- 사용자가 거절 혹은 수락을 클릭하면 onRequestPermissionResult()메서드가 호출됨
+```kotlin
+override fun onRequestPermissionsResult(
+        requestCode: Int, //요청한 주체를 확인하는 코드
+        permissions: Array<out String>, //요청한 권한 목록
+        grantResults: IntArray  //권한 목록에 대한 승인 미승인값,권한 목록의 개수
+    ) {
+        when(requestCode){
+            99->{
+                if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    startProcess()
+                }else{
+                    finish()
+                }
+            }
+        }
+    }
+```
 #### 서명권한
 * 권한을 사용하려는 앱이 권한을 정의하는 앱과 동일한 인증서로 서명된 경우 시스템은 권한을 자동으로 부여함
