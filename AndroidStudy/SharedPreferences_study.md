@@ -42,7 +42,7 @@ editor.apply()
 * defalutValue를 지정하면 데이터가 없을때 기본값을 반환함
 ```kotlin
 val shared=getSharedPreferences("이름",Context.MODE_PRIVATE)
-shared.getString("키","기본값")?:"기본값"
+shared.getString("키","키값이비었을때기본값")?:"키가없을때기본값"
 ```
 ## Editor으로 삭제처리
 * remove(Stirng key):해당 키의 데이터를 삭제함
