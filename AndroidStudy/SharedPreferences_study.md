@@ -32,7 +32,7 @@ var preference=getPreferences(Context.MODE_PRIVATE)
 ```kotlin
 val shared=getSharedPreferences("이름",Context.MODE_PRIVATE)
 val editor=shared.edit()
-editor.putString("파일이름","값")
+editor.putString("key이름","값")
 editor.apply()
 ```
 * Editor메서드들:putString,putFloat,putInt등등
