@@ -1,8 +1,6 @@
 package com.example.mvvmclickergame
 
-import android.util.Log
 import androidx.databinding.ObservableField
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ViewModel:ViewModel() {
