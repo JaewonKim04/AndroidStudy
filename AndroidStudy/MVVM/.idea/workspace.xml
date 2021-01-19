@@ -61,7 +61,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1nGm44zNZUhqx6dbzy23Vuc4RtC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -95,9 +97,9 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="686" y="215" key="FileChooserDialogImpl" timestamp="1611024723771">
+    <state x="686" y="215" key="FileChooserDialogImpl" timestamp="1611032616674">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="686" y="215" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611024723771" />
+    <state x="686" y="215" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611032616674" />
   </component>
 </project>
