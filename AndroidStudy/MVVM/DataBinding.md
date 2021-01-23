@@ -14,15 +14,34 @@ android{
 ```
 2. 사용할 Xml을 layout으로 묶고 data와 variable을 정의함
 ```xml
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
-        <data>
-            <variable
-                name="viewmodel"
-                type="com.myapp.data.ViewModel" />
-        </data>
-        <ConstraintLayout... /> <!-- UI layout's root element -->
-    </layout>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.mvvmclickergame.ViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.score}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
 ```
 3. MainActivity에서 binding 해준다
 ```kotlin
@@ -42,4 +61,12 @@ class MainActivity : AppCompatActivity() {
         binding.viewmodel = viewModel
     }
 }
+```
+## 2-WayBinding(양방향 binding)
+* View에 지정한 정보를 ViewModel에도 상호 갱신되도록 해야할때 사용
+* 1-WayBinding:__ViewModel to View__ 로 화면갱신
+* 2-WayBinding:__View to ViewModel__ 로 갱신하는것
+```xml
+<EditText
+android:text="@={viewmodel.inputText}"/>
 ```
