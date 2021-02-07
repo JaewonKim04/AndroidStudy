@@ -1,22 +1,18 @@
 package com.example.mvvmclickergame
 
-import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ViewModel:ViewModel() {
-    var ct=0
-    var score=ObservableField<String>("0")
+    var score=MutableLiveData<Int>(0)
     fun onPlusClick(){
-        ct++
-        score.set(ct.toString())
+        score.value = score.value?.plus(1)
     }
     fun onMinusClick(){
-        ct--
-        score.set(ct.toString())
+        score.value=score.value?.minus(1)
     }
     fun onResetClick(){
-        ct=0
-        score.set(ct.toString())
+        score.value=0
     }
 
 }
