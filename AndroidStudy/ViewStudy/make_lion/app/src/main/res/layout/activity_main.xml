@@ -58,8 +58,8 @@
 
     <View
         android:id="@+id/left_eye"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/eye_background"
@@ -68,11 +68,43 @@
 
     <View
         android:id="@+id/right_eye"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/eye_background"
         app:layout_constraintStart_toStartOf="@+id/right_eye_brow"
         app:layout_constraintTop_toBottomOf="@+id/right_eye_brow" />
+
+    <View
+        android:id="@+id/left_nose"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/nose_background"
+        app:layout_constraintEnd_toEndOf="@+id/face"
+        app:layout_constraintStart_toStartOf="@+id/face"
+        app:layout_constraintTop_toBottomOf="@+id/left_eye" />
+
+    <View
+        android:id="@+id/right_nose"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/nose_background"
+        app:layout_constraintEnd_toEndOf="@+id/face"
+        app:layout_constraintStart_toStartOf="@+id/face"
+        app:layout_constraintTop_toBottomOf="@+id/right_eye" />
+
+    <View
+        android:id="@+id/left_eye3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/eye_background"
+        app:layout_constraintBottom_toBottomOf="@+id/right_nose"
+        app:layout_constraintEnd_toEndOf="@+id/right_nose"
+        app:layout_constraintStart_toStartOf="@+id/left_nose" />
 </androidx.constraintlayout.widget.ConstraintLayout>
