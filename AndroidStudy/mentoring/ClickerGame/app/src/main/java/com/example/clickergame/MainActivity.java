@@ -17,23 +17,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button plusButton,minusButton;
         TextView textView;
-        plusButton = findViewById(R.id.plus_btn);
-        minusButton = findViewById(R.id.minus_btn);
-        textView = findViewById(R.id.text_view);
-        String text=Integer.toString(count);
-        textView.setText(text);
-        View.OnClickListener onClickListener = new View.OnClickListener() {
+        plusButton=findViewById(R.id.plus_button);
+        minusButton=findViewById(R.id.minus_button);
+        textView=findViewById(R.id.text_view);
+        textView.setText(String.valueOf(count));
+        View.OnClickListener onClickListener= new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
-                if(v.getId()==R.id.plus_btn){
+                if(v.getId()==R.id.plus_button){
                     count++;
-                    String text=Integer.toString(count);
-                    textView.setText(text);
-                }else if(v.getId()==R.id.minus_btn){
+                }else if(v.getId()==R.id.minus_button){
                     count--;
-                    String text=Integer.toString(count);
-                    textView.setText(text);
                 }
+                textView.setText(String.valueOf(count));
             }
         };
         plusButton.setOnClickListener(onClickListener);
