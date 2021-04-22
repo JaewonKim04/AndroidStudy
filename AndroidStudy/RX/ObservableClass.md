@@ -18,10 +18,35 @@
         * RxJava 2.x 추가팩토리 함수:__fromArray(),fromIterable(),fromCallable,fromFuture(),fromPublisher()__
         * 기타팩토리 함수:__interval(),range(),timer(),defer()등__
 
-    ### 1.just()
-    * 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
-    * 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
-    * Observable에서 발행하는 데이터를 그대로 발행하는 함수
+        ### 1.just()
+        * 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
+        * 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
+        * Observable에서 발행하는 데이터를 그대로 발행하는 함수
+        ### 2.create()
+        * 알림이벤트(onNext,onComplete,onError)같은 알림을 개발자가 직접 호출해야함
+        * 개발자가 무언가를 직접하는 느낌이 강한 함수
+        * create()함수를 활용해 데이터를 발행하는 방법
+            ```java
+            Observable<Integer> source = Observable.create(
+                (ObservableEmiiter<Integer> emitter) -> {
+                    emitter.onNext(100);
+                    emitter.onNext(200);
+                    emitter.onNext(300);
+                    emiiter.onComplete();
+                }
+            );
+            source.subscribe(System.out::println);
+            /*
+            * Observable<Integer>타입의 변수를 분리했다(차가운 observable)
+            * subscribe를 호출하지 않으면 아무것도 출력되지 않음
+            */
+            ```
+        * RxJava에 익숙한 사용자만 활용하도록 권고함
+        * 그래도 사용해야한다면 아래 사항을 확인해야함
+            1. Observable이 구독 해지 되었을 때 등록된 콜백을 모두 해제해야함. 그렇지 않으면 잠재적으로 메모리 누수가 발생함
+            2. 구독자가 구독하는 동안에만 onNext와onComplete 이벤트를 호출해야 함
+            3. 에러가 발생했을 때는 오직 onError 이벤트로만 에러를 전달해야 함
+            4. 배압(back pressure)을 직접 처리해야함
 
     ## subscribe()함수&Disposable객체
     * subscribe():실제로 실행되는 시점을 조절
@@ -35,3 +60,5 @@
             * subscribe() 함수들은 모두 Disaposable 인터페이스의 객체를 리턴
             * Observable에게 더이상 데이터를 발행하지 않도록 __구독을 해지하는 함수__
             * 따로 호출할 필요는 없음
+
+    
