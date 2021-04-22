@@ -22,6 +22,7 @@
         * 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
         * 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
         * Observable에서 발행하는 데이터를 그대로 발행하는 함수
+
         ### 2.create()
         * 알림이벤트(onNext,onComplete,onError)같은 알림을 개발자가 직접 호출해야함
         * 개발자가 무언가를 직접하는 느낌이 강한 함수
@@ -48,6 +49,15 @@
             3. 에러가 발생했을 때는 오직 onError 이벤트로만 에러를 전달해야 함
             4. 배압(back pressure)을 직접 처리해야함
 
+        ### 3.fromArray()
+        * just()나 create()는 단일 데이터를 다룸
+        * fromXXX():단일 데이터가 아닐때 사용
+        * 배열에 들어있는 데이터를 처리할때:__fromArray()__
+            ```java
+            Integer[] arr = {100,200,300}; //Integer로 사용해야함
+            Observable<Integer> source = Observable.fromArray(arr);
+            source.subscribe(System.out::println);
+            ```
     ## subscribe()함수&Disposable객체
     * subscribe():실제로 실행되는 시점을 조절
         * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
