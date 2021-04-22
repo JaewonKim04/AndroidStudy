@@ -12,13 +12,26 @@
     * 중간 결과를 처리하는 함수
     * 디버그 및 예외 처리 함수
     * 등등 __많은 한수가 존재함__
-## 생성
-* 정적 팩토리 함수를 호출하여 인스턴스를 생성
-    * RxJava 1.x 기본팩토리 함수:__create(),just(),from()__
-    * RxJava 2.x 추가팩토리 함수:__fromArray(),fromIterable(),fromCallable,fromFuture(),fromPublisher()__
-    * 기타팩토리 함수:__interval(),range(),timer(),defer()등__
+    ## 팩토리함수(생성)
+    * 정적 팩토리 함수를 호출하여 인스턴스를 생성
+        * RxJava 1.x 기본팩토리 함수:__create(),just(),from()__
+        * RxJava 2.x 추가팩토리 함수:__fromArray(),fromIterable(),fromCallable,fromFuture(),fromPublisher()__
+        * 기타팩토리 함수:__interval(),range(),timer(),defer()등__
 
-## just()
-* 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
-* 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
-* Observable에서 발행하는 데이터를 그대로 발행하는 함수
+    ### 1.just()
+    * 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
+    * 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
+    * Observable에서 발행하는 데이터를 그대로 발행하는 함수
+
+    ## subscribe()함수&Disposable객체
+    * subscribe():실제로 실행되는 시점을 조절
+        * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
+        * __인자값에 따른 subscribe()__
+            * __subscribe()__: onError 이벤트가 발생했을때만 OnErrorNotImplementedExceoptio을 던짐(__테스트 하거나 디버깅할 때 활용)
+            * __subscribe(1개)__: onNext 이벤트를 처리,onError 이번트가 발생하면 OnErrorNotImplementedExceoptio을 던짐
+            * __subscribe(2개)__:onNext,onError,onComplete 이벤트 처리
+            * __subscribe(3개)__:onNext,onError,onComplete 이벤트 모두 처리
+        * __Disaposable 객체__
+            * subscribe() 함수들은 모두 Disaposable 인터페이스의 객체를 리턴
+            * Observable에게 더이상 데이터를 발행하지 않도록 __구독을 해지하는 함수__
+            * 따로 호출할 필요는 없음
