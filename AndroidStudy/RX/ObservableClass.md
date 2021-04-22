@@ -6,3 +6,8 @@
 * __onNext__:데이터의 발행을 알림
 * __onComplete__:모든 데이터의 발행이 완료됨을 알림(단 한 번만 발생,발생 후에는 onNext이벤트가 발생하면 안됨)
 * __onError__:어떤 이유로 에러가 발생했음을 알림(__Observable의 실행을 종료함__)
+## 생성
+* 정적 팩토리 함수를 호출하여 인스턴스를 생성
+    * RxJava 1.x 기본팩토리 함수:__create(),just(),from()__
+    * RxJava 2.x 추가팩토리 함수:__fromArray(),fromIterable(),fromCallable,fromFuture(),fromPublisher()__
+    * 기타팩토리 함수:__interval(),range(),timer(),defer()등__
