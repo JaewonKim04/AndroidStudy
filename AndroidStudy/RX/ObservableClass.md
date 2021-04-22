@@ -58,6 +58,8 @@
             Observable<Integer> source = Observable.fromArray(arr);
             source.subscribe(System.out::println);
             ```
+        ### 4.fromIterable()
+        * ArrayList,SetBlockQueue등의 데이터일때 사용
     ## subscribe()함수&Disposable객체
     * subscribe():실제로 실행되는 시점을 조절
         * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
