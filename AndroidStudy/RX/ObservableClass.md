@@ -17,3 +17,8 @@
     * RxJava 1.x 기본팩토리 함수:__create(),just(),from()__
     * RxJava 2.x 추가팩토리 함수:__fromArray(),fromIterable(),fromCallable,fromFuture(),fromPublisher()__
     * 기타팩토리 함수:__interval(),range(),timer(),defer()등__
+
+## just()
+* 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
+* 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
+* Observable에서 발행하는 데이터를 그대로 발행하는 함수
