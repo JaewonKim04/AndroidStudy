@@ -83,6 +83,20 @@
             Observable<String> source = Observable.fromFuture(future);
             source.subscribe(System.out::println);
             ```
+        ### 7. fromPublisher()
+        * Publisher 객체와의 연동을 위한 함수
+        * 예시코드
+            ```kotlin
+            import org.reactivestreams.Publisher;
+            import org.reactivestreams.Subscriber;
+            import io.reactivex.Observable;
+
+            Publisher<String> publisher = (Subscriber<? super String> s) ->{
+                s.onNext("Heelo Observable.fromPublisher());
+                s.onComplete();
+            };
+            Observable<String> source = Observable.fromPublicsher(publisher);
+            source.subscribe(System.out::println);
     ## subscribe()함수&Disposable객체
     * subscribe():실제로 실행되는 시점을 조절
         * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
