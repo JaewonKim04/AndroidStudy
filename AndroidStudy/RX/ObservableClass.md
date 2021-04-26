@@ -96,4 +96,4 @@
             * Observable에게 더이상 데이터를 발행하지 않도록 __구독을 해지하는 함수__
             * 따로 호출할 필요는 없음
 
-    
+참고도서: [RxJava-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
