@@ -49,3 +49,7 @@
         .subscribe(System.out::println);
 
 # Maybe 클래스
+* RxJava 2 에 처음 도입된 특수 형태
+* Single 클래스와 마찬가지로 최대 데이터 하나를 가질 수 있음
+     * 하지만 데이터 발행없이 바로 데이터 발생을 완료로 할 수 있다는 차이가 있음
+     * Single클래스에 onComplete 이벤트가 추가된 형태
