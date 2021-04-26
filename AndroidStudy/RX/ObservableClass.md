@@ -72,6 +72,17 @@
             Observable<String> source = Observable.fromCallable(callable);
             source.subscribe(System.out::println);
             ```
+        ### 6.fromFuture()
+        * Future 객체와의 연동을 위한 함수
+        * 예시코드
+            ```kotlin
+            Future<String> future = Executors.newSingleThreadExecutor().submit(() -> {
+                Thread.sleep(1000);
+                return "Hello Future";
+            })
+            Observable<String> source = Observable.fromFuture(future);
+            source.subscribe(System.out::println);
+            ```
     ## subscribe()함수&Disposable객체
     * subscribe():실제로 실행되는 시점을 조절
         * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
