@@ -47,3 +47,5 @@
         .take(1)
         .single(new Order("default order"))
         .subscribe(System.out::println);
+
+# Maybe 클래스
