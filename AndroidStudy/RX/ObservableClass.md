@@ -75,7 +75,7 @@
         ### 6.fromFuture()
         * Future 객체와의 연동을 위한 함수
         * 예시코드
-            ```kotlin
+            ```java
             Future<String> future = Executors.newSingleThreadExecutor().submit(() -> {
                 Thread.sleep(1000);
                 return "Hello Future";
@@ -86,13 +86,13 @@
         ### 7. fromPublisher()
         * Publisher 객체와의 연동을 위한 함수
         * 예시코드
-            ```kotlin
+            ```java
             import org.reactivestreams.Publisher;
             import org.reactivestreams.Subscriber;
             import io.reactivex.Observable;
 
             Publisher<String> publisher = (Subscriber<? super String> s) ->{
-                s.onNext("Heelo Observable.fromPublisher());
+                s.onNext("Heelo Observable.fromPublisher()");
                 s.onComplete();
             };
             Observable<String> source = Observable.fromPublicsher(publisher);
