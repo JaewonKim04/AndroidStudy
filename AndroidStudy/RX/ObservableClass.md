@@ -109,5 +109,13 @@
             * subscribe() 함수들은 모두 Disaposable 인터페이스의 객체를 리턴
             * Observable에게 더이상 데이터를 발행하지 않도록 __구독을 해지하는 함수__
             * 따로 호출할 필요는 없음
+    ## 뜨거운&차가운 Observable
+    * 차가운 Observable
+        * just(),fromIterable()함수를 호출해도 subscribe()함수를 호출하여 구독하지 않으면 데이터를 발행하지 않음 (__게으른 접근법__)
+        * 웹 요청, 데이터베이스 쿼리와 파일 읽기등
+    * 뜨거운 Observable
+        * 구독자의 존재여부와 관계없이 데이터를 발행하는 Observable
+            * 여러 구독자를 고려할 수 있음
+            * 마우스 이벤트, 키보드 이벤트, 시스템 이벤트, 센서 데이터,주식 가격
 
 참고도서: [RxJava-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
