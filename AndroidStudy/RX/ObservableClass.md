@@ -120,8 +120,88 @@
     * Subject 클래스
         * 차가운 Observable을 뜨거운 Observable로 바꿔주는 클래스
         * Observable처럼 데이터를 발행할 수도 있고, 구독자처럼 발행된 데이터를 바로 처리할 수도 있음
-        * __AsyncSubject__
+        * __AsyncSubject__ 클래스
             * Observable에서 발핵한 마지막 데이터를 얻어올 수 있는 Subject 클래스
+            * 예시
+                ```java
+                AsyncSubject<String> subject = AsyncSubject.create();
+                subject.subscribe(data -> System.out.println("Subscriber #1 =>"+data));
+                subject.onNext("1");
+                subject.onNext("3");
+                subject.subscribe(data -> Sustem.out.println("Subscriber #2 =>"+data));
+                subject.onNest("5");
+                subject.onComplete();
+                ```
+                실행결과
+                ```
+                Subscriber #1 =>5
+                Subscriber #2 =>5
+                ```
+        * __BehaviorSubject__ 클래스
+            * 구독을 하면 가장 최근 값 또는 기본값을 넘겨주는 클래스
+            * 예시
+                ```java
+                BegaviorSubject<String> subject = BehaviorSubject.createDefault("6");
+                subject.subscribe(data -> System.out.println("Subscriber #1 => " + data));
+                subject.onNext("1");
+                subject.onNext("3");
+                subject.subscribe(data -> System.out.println("Subscriber #2 => " + data));
+                subject.onNext("5");
+                subject.onComplete();
+                ```
+                실행결과
+                ```
+                Subscriber #1 => 6
+                Subscriber #1 => 1
+                Subscriber #1 => 3
+                Subscriber #2 => 3
+                Subscriber #1 => 5
+                Subscriber #2 => 5
+                ```
+        * __PublishSubject__ 클래스
+            * 가장 평범한 Subject 클래스
+            * subscribe() 함수를 호출하면 값을 발행하기 시작
+            * 해당시간에 발생한 데이터를 그대로 구독자에게 전달받음
+            * 예시
+                ```java
+                PublishSubject<String> subject = PublishSubject.create();
+                subject.subscribe(data -> System.out.println("Subscriber #1 => " + data));
+                subject.onNext("1");
+                subject.onNext("3");
+                subject.subscribe(data -> System.out.println("Subscriber #2 =>" + data));
+                subject.onNext("5");
+                subject.onComplete();
+                ```
+                실행결과
+                ```
+                Subscriber #1 => 1
+                Subscriber #1 => 3
+                Subscriber #1 => 5
+                Subscriber #2 => 5
+                ```
+        * __ReplaySubject__ 클래스
+            * 뜨거운 Observable을 활용하는 목적인데, 차가운 Observable처럼 동작함
+            * 구독자가 새로 생기면 항상 데이터의 처음부터 끝까지 발행함
+            * 모든 데이터 내용을 저장해두는 과정중 메모리 누수가 발생할 가능성을 염두에 두고 사용해야함
+            * 예시
+                ```java
+                ReplaySubject<String> subject = ReplaySubject.create();
+                subject.subscribe(data -> System.out.println("Subscriber #1 =>" + data));
+                subject.onNext("1");
+                subject.onNext("3");
+                subject.subscribe(data -> System.out.println("Subscriber #2 => " + data));
+                subject.onNext("5");
+                subject.onComplete();
+                ```
+                실행결과
+                ```
+                Subscriber #1 => 1
+                Subscriber #1 => 3
+                Subscriber #2 => 1
+                Subscriber #2 => 3
+                Subscriber #1 => 5
+                Subscriber #2 => 5
+                ```
+                
 
-
-참고도서: [RxJava-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
+참고도서: [RxJava프로그래밍-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
