@@ -117,5 +117,11 @@
         * 구독자의 존재여부와 관계없이 데이터를 발행하는 Observable
             * 여러 구독자를 고려할 수 있음
             * 마우스 이벤트, 키보드 이벤트, 시스템 이벤트, 센서 데이터,주식 가격
+    * Subject 클래스
+        * 차가운 Observable을 뜨거운 Observable로 바꿔주는 클래스
+        * Observable처럼 데이터를 발행할 수도 있고, 구독자처럼 발행된 데이터를 바로 처리할 수도 있음
+        * __AsyncSubject__
+            * Observable에서 발핵한 마지막 데이터를 얻어올 수 있는 Subject 클래스
+
 
 참고도서: [RxJava-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
