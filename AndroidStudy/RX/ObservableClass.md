@@ -202,6 +202,37 @@
                 Subscriber #1 => 5
                 Subscriber #2 => 5
                 ```
-                
+    ## ConnectableObservable 클래스
+    * 차가운 Observable을 뜨거운 Observable으로 변환
+    * 원 데이터 하나를 여러 구독자에게 동시에 전달할 떄 사용함
+    * Observable에 publish() 함수를 호출 해야함
+    * connect() 함수를 호출한 시점부터 subscribe() 함수를 호출한 구독자에게 데이터를 발행함
+    * 예시
+        ```java
+        String[] dt ={"1","3","5"};
+        Observable<String> balls = Observable.invertal(100L,TimeUnit.MILLISECONDS)  //100ms 간격으로 발행
+            .map(Long::intValue)
+            .map(i -> dt[i])
+            .take(dt.length);
+        ConnectableObservable<String> source = balls.publish();
+        source.subscribe(data -> System.out.println("Subscriber #1 => " + data));
+        source.subscribe(data -> System.out.println("Subscriber #2 => " + data));
+        source.connect(); //발행시작
+
+        CommonUtils.sleep(250);
+        source.subscribe(data -> System.out.println("Subscriber #3 => " + data));
+        CommonUtils.sleep(100);
+        ```
+        실행결과
+        ```
+        Subscriber #1 => 1
+        Subscriber #2 => 1
+        Subscriber #1 => 3
+        Subscriber #2 => 3
+        Subscriber #1 => 5
+        Subscriber #2 => 5
+        Subscriber #3 => 5
+        ```
+        
 
 참고도서: [RxJava프로그래밍-유동환,박정준 지음](https://book.naver.com/bookdb/book_detail.nhn?bid=12495967)
