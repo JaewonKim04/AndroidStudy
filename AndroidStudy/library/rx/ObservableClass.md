@@ -11,7 +11,7 @@
     * Observable을 생성하는 팩토리 함수
     * 중간 결과를 처리하는 함수
     * 디버그 및 예외 처리 함수
-    * 등등 __많은 한수가 존재함__
+    * 등등 __많은 함수가 존재함__
     ## 팩토리함수(생성)
     * 정적 팩토리 함수를 호출하여 인스턴스를 생성
         * RxJava 1.x 기본팩토리 함수:__create(),just(),from()__
@@ -101,8 +101,8 @@
     * subscribe():실제로 실행되는 시점을 조절
         * Observable은 데이터 흐름을 정의한후 __subscribe()함수를 호출해야 실제로 발행__
         * __인자값에 따른 subscribe()__
-            * __subscribe()__: onError 이벤트가 발생했을때만 OnErrorNotImplementedExceoptio을 던짐(__테스트 하거나 디버깅할 때 활용)
-            * __subscribe(1개)__: onNext 이벤트를 처리,onError 이번트가 발생하면 OnErrorNotImplementedExceoptio을 던짐
+            * __subscribe()__: onError 이벤트가 발생했을때만 OnErrorNotImplementedExceoption을 던짐(__테스트 하거나 디버깅할 때 활용)
+            * __subscribe(1개)__: onNext 이벤트를 처리,onError 이번트가 발생하면 OnErrorNotImplementedExceoption을 던짐
             * __subscribe(2개)__:onNext,onError,onComplete 이벤트 처리
             * __subscribe(3개)__:onNext,onError,onComplete 이벤트 모두 처리
         * __Disaposable 객체__
@@ -121,7 +121,7 @@
         * 차가운 Observable을 뜨거운 Observable로 바꿔주는 클래스
         * Observable처럼 데이터를 발행할 수도 있고, 구독자처럼 발행된 데이터를 바로 처리할 수도 있음
         * __AsyncSubject__ 클래스
-            * Observable에서 발핵한 마지막 데이터를 얻어올 수 있는 Subject 클래스
+            * Observable에서 발행한 마지막 데이터를 얻어올 수 있는 Subject 클래스
             * 예시
                 ```java
                 AsyncSubject<String> subject = AsyncSubject.create();
