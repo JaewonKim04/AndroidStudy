@@ -22,6 +22,19 @@
         * 인자로 넣은 데이터를 __차례로 발행하는__ Observable을 생성
         * 한개의 값을 넣을 수도 있고 인자로 여러개의 값(최대 10개,모두 같은 타입)을 넣을 수도 있음
         * Observable에서 발행하는 데이터를 그대로 발행하는 함수
+        * 예시
+            ```java
+            Observable source = Observable.just(1,2,3,4,5);
+            source.subscribe();
+            ```
+            실행결과
+            ```
+            1
+            2
+            3
+            4
+            5
+            ```
 
         ### 2.create()
         * 알림이벤트(onNext,onComplete,onError)같은 알림을 개발자가 직접 호출해야함
