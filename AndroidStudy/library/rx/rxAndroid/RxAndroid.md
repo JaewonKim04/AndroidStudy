@@ -17,6 +17,6 @@
 * RxJava와 기본개념은 동일
 * __RxJava의 구조에 안드로이드의 각 컴포넌트를 사용할 수 있게 변경한것__
 * RxAndroid의 스케줄러
-    * __AndroidSchdulers.mainThread()__:안드로이드의 UI 스레드에서 동작하는 스케줄러
+    * __AndroidSchedulers.mainThread()__:안드로이드의 UI 스레드에서 동작하는 스케줄러
     * __HandlerScheduler.from(handler)__:특정 핸들러에 의존하여 동작하는 스케줄러
 
