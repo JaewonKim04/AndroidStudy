@@ -20,3 +20,47 @@
     * __AndroidSchedulers.mainThread()__:안드로이드의 UI 스레드에서 동작하는 스케줄러
     * __HandlerScheduler.from(handler)__:특정 핸들러에 의존하여 동작하는 스케줄러
 
+## RxLifecycle 라이브러리
+* 안드로이드의 액티비티와 프래그먼트의 라이프 사이클을 RxJava에서 사용할 수 있게 해줌
+    * 구독할 때 발생할 수 있는 메모리 누수를 방지하기 위해 사용(완료하지 못한 구독을 자동해제)
+* RxLifecycle 라이프 사이클 컴포넌트
+
+    |컴포넌트|설명|
+    |---|----|
+    |RxActivity|액티비티에 대응|
+    |RxDialogFragment|DialogFragment에 대응|
+    |RxFragment|Fragment에 대응|
+    |RxPreferenceFragment|PreferenceFragment에 대응|
+    |RxAppCompatActivity|AppCompatActivity에 대응|
+    |RxAppCompatDialogFragment|AppCompatDialogFragment에 대응|
+    |RxFragmentActivity|FragmentActivity에 대응|
+    * 예시
+    ```java
+    public class Activity extends RxAppCompatActivity {//<-AppCompatActivity 대신 RxAppCompat Activity 상속
+    public static final String TAG = Activity.class.getsimpleName();
+
+    @BindView(R.id.textView) TextView textView;
+
+    private Unbinder mUnbinder;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mUnbinder = ButterKnife.bind(this);
+
+        Observable.just("Hello, rx world")
+            .compose(bindToLifecycle())
+            .subscribe(textView::setText);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if(mUbinder != null){
+            mUnBinder.unbind();
+        }
+    }
+
+    }
