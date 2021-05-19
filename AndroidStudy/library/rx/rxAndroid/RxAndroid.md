@@ -35,32 +35,83 @@
     |RxAppCompatDialogFragment|AppCompatDialogFragment에 대응|
     |RxFragmentActivity|FragmentActivity에 대응|
     * 예시
-    ```java
-    public class Activity extends RxAppCompatActivity {//<-AppCompatActivity 대신 RxAppCompat Activity 상속
-    public static final String TAG = Activity.class.getsimpleName();
+        ```java
+        public class Activity extends RxAppCompatActivity {//<-AppCompatActivity 대신 RxAppCompat Activity 상속
+        public static final String TAG = Activity.class.getsimpleName();
 
-    @BindView(R.id.textView) TextView textView;
+        @BindView(R.id.textView) TextView textView;
 
-    private Unbinder mUnbinder;
+        private Unbinder mUnbinder;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        @Override
+        protected void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        mUnbinder = ButterKnife.bind(this);
+            mUnbinder = ButterKnife.bind(this);
 
-        Observable.just("Hello, rx world")
-            .compose(bindToLifecycle())
-            .subscribe(textView::setText);
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        if(mUbinder != null){
-            mUnBinder.unbind();
+            Observable.just("Hello, rx world")
+                .compose(bindToLifecycle())
+                .subscribe(textView::setText);
         }
-    }
 
-    }
+        @Override
+        protected void onDestroy(){
+          super.onDestroy();
+         if(mUbinder != null){
+             mUnBinder.unbind();
+            }
+        }
+
+        }
+        ```
+## UI 이벤트 처리
+* 이벤트 리스너 인터페이스에 포함된 콜백 메서드
+
+    |콜백 메서드 이름|설명|
+    |---|---|
+    |onClick()|enter키 혹은 트랙볼을 눌렀을 때 호출|
+    |onLongClick()|enter키 혹은 트랙볼을 길게(1초이상) 눌렀을 때 호출|
+    |onFocusChange()|아이템 위로 움직이게 하거나 포커스가 벗어날 때 호출|
+    |onKey()|디바이스에 있는 키를 누르거나 놓았을 때 호출|
+    |onTouch()|어떤 움직임을 포함하는 터치 이벤트 액션을 실행할 때 호출|
+    |onCreateContextMenu()|길게 터치하거나 누른 결과로 컨텍스트 메뉴가 열렸을 때 호출|
+
+    * onClick()의 Observable 예시
+        ```java
+        public class OnClickFragment extends Fragment {
+            public static final String TAG = OnClickFragment.class.getSimpleName();
+
+            @BindView(R.id.btn_click_observer)
+            Button mButton;
+
+            @Override
+            public void onActivityCreated(@Nullable Bundle savedInstanceState){
+                getClickEventObservable()
+                    .map(s -> "clicked")
+                    .subscribe(getObserver());
+            }
+
+            private Observable<View> getClickEventObservable() {
+                return Observable.create(new ObservableOnSubscribe<View>(){
+                    @Override
+                    public void subscribe(ObservableEmitter<View> e) throws Exception {
+                        mButton.setOnClickListener(e::onNext);
+                    }
+                }); 
+            }
+
+            private DisposableObserver<? super String> getObserver() {
+                return new DisposableObserver<String>() {
+                    @Override
+                    public void onNext(String s){log(s);}
+
+                    @Override
+                    public void onError(Throwable e){log(e.getMessage());}
+
+                    @Override
+                    public void onComplete(){log("complete");}
+                }
+            }
+        }
+      ```
