@@ -16,3 +16,8 @@
     1. __onCreateViewHolder(ViewGroup parent, int viewType)__: ViewHolder를 생성하고 뷰를 붙여주는 부분
     2. __onBindViewHolder(ListItemViewHolder holder, int position)__: 재활용하는 뷰를 호출하여 실행하는 메서드
     3. __getItemCount()__: 데이터의 개수를 반환
+## LayoutManager
+* 뷰를 그리는 방법을 정의
+* 종류
+    * LinearLayoutManager: 가로 또는 세로 형태의 리스트로 나타냄
+    * GridLayoutManager: 그리드 형식으로 항목을 표시함
