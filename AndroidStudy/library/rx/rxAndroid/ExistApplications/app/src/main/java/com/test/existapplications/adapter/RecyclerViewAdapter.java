@@ -25,7 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private PublishSubject<RecyclerItem> recyclerItemPublishSubject;
 
-    RecyclerViewAdapter(){
+    public RecyclerViewAdapter(){
         this.recyclerItemPublishSubject = PublishSubject.create();
     }
 
@@ -51,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return itemList.size();
     }
 
-    public void updateItems(List<RecyclerItem> items){
+    public void updateItem(List<RecyclerItem> items){
         itemList.addAll(items);
         this.notifyDataSetChanged();
     }
