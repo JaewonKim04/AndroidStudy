@@ -1,8 +1,10 @@
-package com.test.existapplications;
+package com.test.existapplications.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.test.existapplications.R;
 
 public class MainActivity extends AppCompatActivity {
 
