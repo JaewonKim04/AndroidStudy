@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -18,10 +19,11 @@ import butterknife.Unbinder;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends AppCompatActivity {
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.main_rv)
     RecyclerView mainRecyclerView;
 
-    private Utils utils;
+    private final Utils utils = new Utils();
 
     private RecyclerViewAdapter mRecyclerviewAdapter;
     private Unbinder mUnBinder;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         mainRecyclerView=findViewById(R.id.main_rv);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(layoutManager);
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerviewAdapter
                 .getRecyclerItemPublishSubject()
                 .subscribe(s->toast(s.getTitle()));
-        ButterKnife.bind(this);
     }
 
     @Override

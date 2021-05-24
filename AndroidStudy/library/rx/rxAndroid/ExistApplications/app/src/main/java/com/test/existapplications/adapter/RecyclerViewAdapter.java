@@ -1,5 +1,7 @@
 package com.test.existapplications.adapter;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +22,18 @@ import butterknife.ButterKnife;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<RecyclerItem> itemList = new ArrayList<>();
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private final List<RecyclerItem> itemList = new ArrayList<>();
 
-    private PublishSubject<RecyclerItem> recyclerItemPublishSubject;
+    private final PublishSubject<RecyclerItem> recyclerItemPublishSubject;
 
-    public RecyclerViewAdapter(){
+    public RecyclerViewAdapter() {
         this.recyclerItemPublishSubject = PublishSubject.create();
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_view, parent, false);
         return new MyViewHolder(view);
@@ -39,8 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder cHolder = (MyViewHolder)holder;
+        MyViewHolder cHolder = (MyViewHolder) holder;
         final RecyclerItem item = itemList.get(position);
+        Log.e("아이템", "얻은값:"+item.getImage().toString());
         cHolder.mImage.setImageDrawable(item.getImage());
         cHolder.mTitle.setText(item.getTitle());
         cHolder.getClickObserver(item).subscribe(recyclerItemPublishSubject);
@@ -51,24 +54,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return itemList.size();
     }
 
-    public void updateItem(List<RecyclerItem> items){
+    public void updateItem(List<RecyclerItem> items) {
         itemList.addAll(items);
         this.notifyDataSetChanged();
     }
 
-    public void updateItem(RecyclerItem item){
+    public void updateItem(RecyclerItem item) {
         itemList.add(item);
         this.notifyDataSetChanged();
     }
 
-    public PublishSubject<RecyclerItem> getRecyclerItemPublishSubject(){
+    public PublishSubject<RecyclerItem> getRecyclerItemPublishSubject() {
         return recyclerItemPublishSubject;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    static class MyViewHolder extends RecyclerView.ViewHolder {
+        @SuppressLint("NonConstantResourceId")
         @BindView(R.id.item_iv)
         ImageView mImage;
 
+        @SuppressLint("NonConstantResourceId")
         @BindView(R.id.item_tv)
         TextView mTitle;
 
@@ -77,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ButterKnife.bind(this, itemView);
         }
 
-        Observable<RecyclerItem> getClickObserver(RecyclerItem item){
+        Observable<RecyclerItem> getClickObserver(RecyclerItem item) {
             return Observable.create(e -> itemView.setOnClickListener(
                     view -> e.onNext(item)
             ));

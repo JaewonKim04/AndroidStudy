@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 
 import com.test.existapplications.model.RecyclerItem;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -20,7 +21,7 @@ public class Utils {
         return Observable.fromIterable(pm.queryIntentActivities(i,0))
                 .sorted(new ResolveInfo.DisplayNameComparator(pm))
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .map(item->{
                     Drawable image = item.activityInfo.loadIcon(pm);
                     String title = item.activityInfo.loadLabel(pm).toString();
