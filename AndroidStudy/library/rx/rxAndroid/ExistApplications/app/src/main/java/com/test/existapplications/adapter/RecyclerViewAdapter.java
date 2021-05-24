@@ -69,17 +69,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        @SuppressLint("NonConstantResourceId")
-        @BindView(R.id.item_iv)
         ImageView mImage;
 
-        @SuppressLint("NonConstantResourceId")
-        @BindView(R.id.item_tv)
         TextView mTitle;
 
         private MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            mImage = itemView.findViewById(R.id.item_iv);
+            mTitle = itemView.findViewById(R.id.item_tv);
         }
 
         Observable<RecyclerItem> getClickObserver(RecyclerItem item) {
