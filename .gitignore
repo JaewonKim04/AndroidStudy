@@ -4,3 +4,15 @@ AndroidStudy/rx/rxJavaPractice/rxJavaPractice/.project
 AndroidStudy/rx/rxJavaPractice/rxJavaPractice/lib/.project
 
 AndroidStudy/rx/rxJavaPractice/rxJavaPractice/lib/bin/.project
+
+.DS_Store
+
+.idea/AndroidStudy.iml
+
+.idea/modules.xml
+
+.idea/runConfigurations.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
