@@ -83,11 +83,14 @@ fun PersonCard(person: Person) {
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        Column {
-            SetNameText(name = person.name)
-            Spacer(modifier = Modifier.height(4.dp))
-            SetAgeText(age = person.age)
+        Surface(shape = MaterialTheme.shapes.medium,elevation = 1.dp) {
+            Column(modifier = Modifier.padding(4.dp)) {
+                SetNameText(name = person.name)
+                Spacer(modifier = Modifier.height(4.dp))
+                SetAgeText(age = person.age)
+            }
         }
+
     }
 }
 
