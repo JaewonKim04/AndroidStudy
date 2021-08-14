@@ -6,7 +6,7 @@
     * [compose](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/compose): Android JetPack Compose에 대해서 공부한 내용입니다.
     * [designPattern](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/designPattern): 디자인 패턴에 대해서 공부한 내용들입니다.
     * [library](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/library): Android에서 사용할 수 있는 library를 공부한 내용입니다.
-    * mentoring: 멘토링을 진행하면서 만든 프로젝트들 입니다
+    * [rx]()
     * thread: 스레드에 대해 공부한 내용들 입니다.
     * view: view에 관해서 공부한 내용들 입니다.
 ## KotlinStudy
