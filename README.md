@@ -7,8 +7,8 @@
     * [designPattern](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/designPattern): __디자인 패턴__ 에 대해서 공부한 내용들입니다.
     * [library](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/library): Android에서 사용할 수 있는 __library__ 를 공부한 내용입니다.
     * [rx](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/rx): __ReactiveX Java, ReactiveX Android__ 를 공부한 내용입니다.
-    * [thread](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/thread): __스레드 __ 에 대해 공부한 내용들 입니다.
-    * [view](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/view): __view __ 에 관해서 공부한 내용들 입니다.
+    * [thread](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/thread):  __스레드 __  에 대해 공부한 내용들 입니다.
+    * [view](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/view):  __view __  에 관해서 공부한 내용들 입니다.
 ## KotlinStudy
 * Kotlin문법과 관련된 자료들 입니다
 
