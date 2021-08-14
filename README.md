@@ -11,3 +11,4 @@
     * [view](https://github.com/jaewonkim1468/AndroidStudy/tree/master/AndroidStudy/view): __view __ 에 관해서 공부한 내용들 입니다.
 ## KotlinStudy
 * Kotlin문법과 관련된 자료들 입니다
+
