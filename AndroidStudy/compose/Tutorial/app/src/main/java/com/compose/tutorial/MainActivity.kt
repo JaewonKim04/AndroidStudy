@@ -13,6 +13,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,13 +26,14 @@ import com.compose.tutorial.ui.theme.TutorialTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val persons = listOf(Person("김재원",18),Person("김재투",19),Person("김재쓰리",20),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19))
+    private val vm = ViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        vm.setPerson()
         setContent {
             TutorialTheme {
-
-                // A surface container using the 'background' color from the theme
+                val persons = vm.persons.observeAsState().value!!
                 Surface(color = MaterialTheme.colors.background) {
                     Column(
                         modifier = Modifier.fillMaxSize(),
@@ -42,6 +46,7 @@ class MainActivity : ComponentActivity() {
                 }
 
             }
+
         }
     }
 }
@@ -113,7 +118,7 @@ fun SetNameText(name: String) {
 }
 
 @Composable
-fun Conversation(persons:List<Person>){
+fun Conversation(persons:ArrayList<Person>){
     LazyColumn{
         items(persons){person->
             PersonCard(person = person)

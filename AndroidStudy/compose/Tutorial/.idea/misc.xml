@@ -7,10 +7,11 @@
         <entry key="../../../../../../../layout/compose-model-1628862029765.xml" value="1.0" />
         <entry key="../../../../../../../layout/compose-model-1628924594734.xml" value="0.2295830431106909" />
         <entry key="../../../../../../../layout/compose-model-1628926572824.xml" value="0.35914572124887867" />
+        <entry key="../../../../../../../layout/compose-model-1628928527096.xml" value="0.2504222972972973" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
