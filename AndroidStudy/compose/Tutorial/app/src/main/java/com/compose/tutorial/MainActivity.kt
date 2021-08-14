@@ -1,10 +1,10 @@
 package com.compose.tutorial
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
@@ -27,10 +27,13 @@ class MainActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         ColumnText("Android")
                         RowText()
-                        PersonCard(person = Person("Tester",17))
+                        PersonCard(person = Person("Tester", 17))
                     }
                 }
 
@@ -64,17 +67,20 @@ fun RowText() {
 
 @Composable
 fun PersonCard(person: Person) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .padding(5.dp)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(5.dp)
+    ) {
         Image(
             painter = painterResource(id = R.drawable.profile_picture),
             contentDescription = "Person profile picture",
             modifier = Modifier
                 .size(40.dp)
                 .clip(CircleShape)
+                .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
         )
-        
+
         Spacer(modifier = Modifier.width(8.dp))
 
         Column {
@@ -86,13 +92,13 @@ fun PersonCard(person: Person) {
 }
 
 @Composable
-fun SetAgeText(age:Int){
+fun SetAgeText(age: Int) {
     Text(text = "나이: $age 세")
 }
 
 @Composable
-fun SetNameText(name:String){
-    Text(text = "이름: $name")
+fun SetNameText(name: String) {
+    Text(text = "이름: $name", color = MaterialTheme.colors.secondaryVariant)
 }
 
 @Preview(showBackground = true)
@@ -102,7 +108,7 @@ fun DefaultPreview() {
 
         // A surface container using the 'background' color from the theme
         Surface(color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()) {
-            PersonCard(person = Person("Test",18))
+            PersonCard(person = Person("Test", 18))
         }
     }
 }
