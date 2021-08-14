@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -20,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import com.compose.tutorial.ui.theme.TutorialTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val persons = listOf(Person("김재원",18),Person("김재투",19),Person("김재쓰리",20),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19),Person("김재투",19))
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         ColumnText("Android")
                         RowText()
-                        PersonCard(person = Person("Tester", 17))
+                        Conversation(persons = persons)
                     }
                 }
 
@@ -106,6 +110,15 @@ fun SetNameText(name: String) {
         color = MaterialTheme.colors.secondaryVariant,
         style = MaterialTheme.typography.subtitle1
     )
+}
+
+@Composable
+fun Conversation(persons:List<Person>){
+    LazyColumn{
+        items(persons){person->
+            PersonCard(person = person)
+        }
+    }
 }
 
 @Preview(showBackground = true)
