@@ -93,12 +93,16 @@ fun PersonCard(person: Person) {
 
 @Composable
 fun SetAgeText(age: Int) {
-    Text(text = "나이: $age 세")
+    Text(text = "나이: $age 세", style = MaterialTheme.typography.body1)
 }
 
 @Composable
 fun SetNameText(name: String) {
-    Text(text = "이름: $name", color = MaterialTheme.colors.secondaryVariant)
+    Text(
+        text = "이름: $name",
+        color = MaterialTheme.colors.secondaryVariant,
+        style = MaterialTheme.typography.subtitle1
+    )
 }
 
 @Preview(showBackground = true)
