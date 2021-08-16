@@ -30,7 +30,6 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm.setPerson()
         setContent {
             TutorialTheme {
                 val persons = vm.persons.observeAsState().value!!
@@ -48,6 +47,7 @@ class MainActivity : ComponentActivity() {
             }
 
         }
+        vm.setPerson()
     }
 }
 
