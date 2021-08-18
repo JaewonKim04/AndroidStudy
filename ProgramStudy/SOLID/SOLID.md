@@ -16,4 +16,4 @@ __중간 수준__ 의 소프트웨어 구조가 아래와 같도록 만드는데
 * 이해하기 쉽다
 * 많은 소프트웨어 시스템에 사용될 수 있는 컴포넌트의 기반이 됨
 
-참고문서:[Clean Archtecture](https://books.google.co.kr/books?id=xk9MyAEACAAJ&dq=clean+architecture+%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8&hl=ko&sa=X&ved=2ahUKEwiLwP6Ci7ryAhUFVpQKHUr1C3sQ6AEwA3oECAMQAQ)
+참고문서:[Clean Archtecture](https://books.google.co.kr/books?id=xk9MyAEACAAJ&dq=clean+architecture+%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8&hl=ko&sa=X&ved=2ahUKEwiLwP6Ci7ryAhUFVpQKHUr1C3sQ6AEwA3oECAMQAQ),[객체지향 개발 5대 원리: Solid](https://www.nextree.co.kr/p6960/)
