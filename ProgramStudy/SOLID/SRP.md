@@ -17,3 +17,27 @@
 1. 여러 원인에 의한 변경: __Extract class를 통해__ 혼재된 책임을 개별 클래스로 분할하여 __클래스 하나당 하나의 책임__ 을 맡도록 하는것. 이때, 두 클래스간의 복잡도를 줄이도록 설계 하는게 중요함. 만일 Extract class된 각각의 클래스가 동일한 책임을 지고있으면 __Extract Superclass__ 를 사용할 수 있음.
     * __Extract Superclass__:유사한 책임은 부모에게 위임하는 것
 2. 산탄총 수술: Move field, Move Method를 통해 책임을 기존의 어떤 클래스로 모으거나, 새로운 클래스를 만듦.
+
+## 예시
+```java
+class Car{
+    Integer serialNumber;
+    Integer price;
+    String type;
+    String backWood;
+}
+// serialNumber은 고유정보이지만, 나머지는 특성정보군이므로 변경 할 수 있는 부분
+// 이부분이 SRP 적용 대상
+
+class Car{
+    Integer serialNumber;
+    CarSpec carSpec;
+}
+
+class CarSpec{
+    Integer price;
+    String type;
+    String backWood;
+}
+
+```
