@@ -14,4 +14,4 @@
 
 ## ProgramStudy
 * 개발할때 알아야할 내용들을 정리한 자료들입니다.
-    * [solid]{https://github.com/jaewonkim1468/AndroidStudy/tree/master/ProgramStudy/SOLID}: __SOLID원칙__ 에 대해서 공부하였습니다.
+    * [solid](https://github.com/jaewonkim1468/AndroidStudy/tree/master/ProgramStudy/SOLID): __SOLID원칙__ 에 대해서 공부하였습니다.
